@@ -23,4 +23,11 @@ RSpec.describe WelcomeController, type: :controller do
     end
   end
 
+  describe "GET #analyze" do
+    it "returns http success" do
+      get :analyze
+      expect(response).to have_http_status(:success)
+    end
+  end
+
 end
