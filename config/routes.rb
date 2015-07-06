@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   
   get "welcome/contact"
   
+  resources :users, only: [:update]
+  
   root to: 'welcome#index'
   
 end
