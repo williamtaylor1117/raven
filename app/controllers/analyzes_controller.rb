@@ -1,16 +1,29 @@
-require './alchemyapi'
-
-class AlchemyApi
+class AnalyzesController < ApplicationController
   
-  def demo
+  def index
+    @url = params[:url]
+       
+    @text = params[:text]
+      
+    @html = params[:html]
+    demo
+  end
 
-demo_text = "A 22-year-old man who was drinking and celebrating the Fourth of July tried to launch a firework off the top of his head, killing him instantly, authorities said Sunday. Devon Staples and his friends had been drinking and setting off fireworks Saturday night in the backyard of a friend's home in eastern Maine, said Stephen McCausland, a spokesman for the state Department of Public Safety. Staples, 22, of Calais, a small city on the Canadian border, placed a reloadable fireworks mortar tube on his head and told his friends he was going to light it, McCausland said. But his friends urged him to stop. 'Apparently, he thought that was a great idea,' McCausland said. 'His friends they thought dissuaded him from doing it, and the next thing they knew, he ignited the fireworks and he was killed instantly.' Staples's brother Cody told the Daily News of New York that he was a few feet away when his brother lit the firework and was the first to come to his side after it exploded. 'There was no rushing him to the hospital. There was no Devon left when I got there,' said 25-year-old Cody Staples, who called it an accident. 'Devon was not the kind of person who would do something stupid. He was the kind of person who would pretend to do something stupid to make people laugh,' he said. Staples' death is the first fireworks fatality in Maine since the state legalized fireworks on Jan. 1, 2012, authorities said. Lawmakers had voted to repeal a 1949 law banning fireworks, reasoning the industry would create jobs and generate revenue. State fire marshals were also investigating several other Fourth of July fireworks accidents involving injuries in Friendship, Jefferson, Lebanon and Woodstock. They said most of the accidents involved burns and eye injuries. In Montana on Saturday, a 32-year-old man was killed at a Billings home in a fireworks accident involving a mortar tube. And in New Jersey, a 52-year-old man blew off a large piece of his left leg below the knee when he set off a tennis-ball sized firework in Leonia."
+  def show
+  end
 
-demo_url= "http://www.theblaze.com/stories/2015/07/05/not-everyone-likes-the-fourth-of-july-themed-al-jazeera-video-that-mocks-american-as-fat-gun-toting-racists/"
+  def query
+  end    
+    
+  
+  
+ def demo
 
-demo_html = "<meta name='description' itemprop='description' content='Beware of sharks (Thinkstock) Officials in Hawaii are reporting a fatal shark attack off the island of Maui and are barring swimmers from the area’s shoreline.  The Hawaii Department of Land and Natural Resources said the attack occurred on Wednesday.  Local news website Maui Now, citing a Maui fire official, said the victim was a 65-year-old woman who apparently had been snorkeling in the water and was found floating face-down with injuries to her torso believed to be from a shark attack near a popular surf spot called 'Dumps.' Related: Forget the Beach — Eat Your Way Across Maui Sometimes danger lurks in paradise (Thinkstock) The Department of Land and Natural Resources said a stretch of water along more than 4 miles (6.4 km) of shoreline in the area will be closed at least until noon local time on Thursday as a result of the death.  A tiger shark last month bit the arm of a person, causing severe but not fatal lacerations, at Hapuna Beach on Hawaii’s Big Island, officials said.'>"
+  demo_text = @text
+  demo_url= @url
+  demo_html = @html
 
-alchemyapi = AlchemyAPI.new()
+  alchemyapi = AlchemyAPI.new()
 
 puts ''
 puts ''
@@ -621,4 +634,5 @@ puts ''
 puts ''
 
   end
+  
 end
