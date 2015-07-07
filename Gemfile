@@ -48,6 +48,8 @@ gem 'figaro', '1.0'
 
 gem 'json'
 
+gem 'alchemy-api-rb', :require => 'alchemy_api'
+
 group :test do
   gem 'capybara'
   gem 'factory_girl_rails', '~> 4.0'
