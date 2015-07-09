@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
  
-  
-
   devise_for :users
   
   get "alchemy/search"
@@ -11,6 +9,8 @@ Rails.application.routes.draw do
   get "welcome/about"
   
   get "welcome/contact"
+  
+  resources :alchemy
   
   resources :users, only: [:update]
   

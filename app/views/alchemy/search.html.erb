@@ -9,8 +9,12 @@
 <%= radio_button_tag(:input, "HTML") %>
 <%= label_tag(:html_input, "HTML") %>
 
-<%= form_tag("/search", method: "get") do %>
-  <%= label_tag(:q, "Enter desired input type:") %>
-  <%= text_field_tag(:q) %>
-  <%= submit_tag("Search") %>
+<%= form_tag("alchemy/query", method: "get", :remote => true) do %>
+<%= label_tag(:q, "Perform Analysis:") %>
+<%= text_field_tag(:q) %>
+<%= submit_tag("Submit") %>
 <% end %>
+
+
+
+
