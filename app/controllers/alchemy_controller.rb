@@ -1,4 +1,5 @@
 require 'alchemyAPI/alchemyapi'
+require 'json'
 
 class AlchemyController < ApplicationController
   
@@ -7,9 +8,11 @@ class AlchemyController < ApplicationController
   
   def query
   	alchemyapi = AlchemyAPI.new()
-    response = alchemyapi.combined('url', params[:q],  {'extract'=>'page-image,keyword,concept,author,title,entity,relation, doc-sentiment','sentiment'=>1, 'knowledgeGraph'=>1 })
+    response = alchemyapi.combined('url', params[:q],  {'extract'=>'page-image, title, author, concept' })
     puts JSON.pretty_generate(response)
-    @response = JSON.parse(response)
+    json = JSON.parse(response)
+    
+    
   end
 
   def new

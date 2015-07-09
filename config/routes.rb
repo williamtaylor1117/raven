@@ -2,7 +2,9 @@ Rails.application.routes.draw do
  
   devise_for :users
   
-  get "alchemy/search"
+  get 'search' => 'alchemy#search'
+  
+  get "alchemy/query"
 
   get "welcome/index"
   
