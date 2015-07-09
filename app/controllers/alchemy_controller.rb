@@ -7,4 +7,8 @@ class AlchemyController < ApplicationController
 
   def persist
   end
+
+  def search
+  	
+  end
 end

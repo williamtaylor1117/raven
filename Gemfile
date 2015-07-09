@@ -26,6 +26,8 @@ gem 'faker'
 
 gem 'devise'
 
+gem 'pg'
+
 gem 'newrelic_rpm'
 
 gem 'redcarpet'
@@ -56,13 +58,13 @@ group :test do
 end
 
 group :production do
-  gem 'pg'
+ 
   gem 'rails_12factor'
   gem 'puma'
  end
  
 group :development do
-  gem 'sqlite3'
+
   gem 'better_errors'
   gem 'binding_of_caller'
  end

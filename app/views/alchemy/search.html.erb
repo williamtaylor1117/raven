@@ -1,0 +1,16 @@
+<h2>Text Discovery</h2>
+
+<%= radio_button_tag(:input, "text") %>
+<%= label_tag(:text_input, "Text") %>
+
+<%= radio_button_tag(:input, "url") %>
+<%= label_tag(:url_input, "URL") %>
+
+<%= radio_button_tag(:input, "HTML") %>
+<%= label_tag(:html_input, "HTML") %>
+
+<%= form_tag("/search", method: "get") do %>
+  <%= label_tag(:q, "Enter desired input type:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>
