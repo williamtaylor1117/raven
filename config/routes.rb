@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   
   get "alchemy/query"
 
+  get "alchemy/index"
+
+  get "alchemy/create"
+
   get "welcome/index"
   
   get "welcome/about"

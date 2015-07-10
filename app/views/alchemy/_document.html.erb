@@ -1,0 +1,9 @@
+<% @documents.each do |doc| %>
+<h2><%= link_to document.id, document %></h2>
+<p><i><%= friendly_date document.created_at %></li></p>
+<p><%= document.result %></p>
+<p>
+	<%= link_to 'Delete', document, method: :delete,
+	data: { confirm: 'Are you sure?' } %>
+</p>
+<% end %>

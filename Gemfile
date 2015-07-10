@@ -26,8 +26,6 @@ gem 'devise'
 
 gem 'pg'
 
-gem 'newrelic_rpm'
-
 gem 'redcarpet'
 
 gem 'pundit'

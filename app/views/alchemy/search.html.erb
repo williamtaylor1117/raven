@@ -9,7 +9,7 @@
 <%= radio_button_tag(:input, "HTML") %>
 <%= label_tag(:html_input, "HTML") %>
 
-<%= form_tag("alchemy/query", method: "get", :remote => true) do %>
+<%= form_tag("alchemy/create", method: "get", :remote => true) do %>
 <%= label_tag(:q, "Perform Analysis:") %>
 <%= text_field_tag(:q) %>
 <%= submit_tag("Submit") %>
