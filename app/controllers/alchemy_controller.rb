@@ -13,11 +13,12 @@ class AlchemyController < ApplicationController
     puts JSON.pretty_generate(response)
       
     if 
-      Document.create(result: response)
+      @user = current_user
+      @user.documents.create(result: response)
       flash[:notice] = "Input was successfully analyzed and persisted."
       redirect_to action: 'index'
     else
-      flash[:notice] = "Input was successfully analyzed and persisted."
+      flash[:error] = "There was a problem analyzing your input. Please try again."
       redirect_to action: 'index'
     end
   end
