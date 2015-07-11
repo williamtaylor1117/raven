@@ -1,18 +1,30 @@
-<h2>Text Discovery</h2>
+<h2>Content Analayis</h2>
 
-<%= radio_button_tag(:input, "text") %>
-<%= label_tag(:text_input, "Text") %>
 
-<%= radio_button_tag(:input, "url") %>
-<%= label_tag(:url_input, "URL") %>
+</br>
+<%= form_tag("alchemy/create", method: "get") do %>
+	
+	<%= label_tag('type', "Choose your input type:") %>
+</br>
+	<%=  radio_button_tag('type', "text")  %> 
+	<%=  label_tag(:text_input, "text")  %>
+	&emsp;
+	<%=  radio_button_tag('type', "url")  %>
+	<%=  label_tag(:url_input, "url")  %>
+	&emsp;
+	<%=  radio_button_tag('type', "html")  %>
+	<%=  label_tag(:html_input, "html")  %>
 
-<%= radio_button_tag(:input, "HTML") %>
-<%= label_tag(:html_input, "HTML") %>
+</br>
+</br>
 
-<%= form_tag("alchemy/create", method: "get", :remote => true) do %>
-<%= label_tag(:q, "Perform Analysis:") %>
-<%= text_field_tag(:q) %>
-<%= submit_tag("Submit") %>
+	<%= label_tag(:q, "Perform Analysis:") %>
+</br>
+	<%= search_field_tag :q, value = nil, options = {style:"width:250px;border-radius:5px;padding-bottom:5px;"} %>
+</br>
+</br>
+	<%= submit_tag("Analyze") %>
+
 <% end %>
 
 

@@ -2,6 +2,7 @@ require 'alchemyAPI/alchemyapi'
 require 'json'
 
 class AlchemyController < ApplicationController
+  before_action :authenticate_user!
   
   def index
     @documents = Document.all
@@ -9,11 +10,12 @@ class AlchemyController < ApplicationController
 
   def create
     alchemyapi = AlchemyAPI.new()
-    response = alchemyapi.combined('url', params[:q],  {'extract'=>'title, concept' })
-     
+    response = alchemyapi.combined(params[:type], params[:q],  {'extract'=>'title, author' })
+    #response = alchemyapi.combined('url', params[:q],  {'extract'=>'page-image, title, author, concept, doc-sentiment, keyword, entity, relation ','sentiment'=>1, 'knowledgeGraph'=>1  })
+    
+
     if 
-      @user = current_user
-      @user.documents.create(result: response)
+      current_user.documents.create(result: response)
       flash[:notice] = "Input was successfully analyzed and persisted."
       redirect_to alchemy_index_path
     else
