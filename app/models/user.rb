@@ -7,4 +7,8 @@ class User < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
 
   has_many :documents
+
+  after_update { self.documents.each(&:touch) }
+
+  include ElasticsearchSearchable
 end

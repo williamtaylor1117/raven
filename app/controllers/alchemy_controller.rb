@@ -9,17 +9,16 @@ class AlchemyController < ApplicationController
 
   def create
     alchemyapi = AlchemyAPI.new()
-    response = alchemyapi.combined('url', params[:q],  {'extract'=>'page-image, title, author, concept' })
-    puts JSON.pretty_generate(response)
-      
+    response = alchemyapi.combined('url', params[:q],  {'extract'=>'title, concept' })
+     
     if 
       @user = current_user
       @user.documents.create(result: response)
       flash[:notice] = "Input was successfully analyzed and persisted."
-      redirect_to action: 'index'
+      redirect_to alchemy_index_path
     else
       flash[:error] = "There was a problem analyzing your input. Please try again."
-      redirect_to action: 'index'
+      redirect_to alchemy_index_path
     end
   end
 

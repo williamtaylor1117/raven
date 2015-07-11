@@ -1,9 +1,8 @@
 <h2>Analysis Results</h2>
 
 <% @documents.each do |document| %>
-
+<p><b>Result id:</b>  <%= document.id %></p>
 <p><b>Date Retrieved:</b> <%= document.created_at %></p>
-<p><b>Retrieved by:</b>  <%= User.name %></p>
 <p><b>JSON return:</b>
 </br> 
 <%= document.result %></p>

@@ -42,9 +42,19 @@ gem 'pry-rails', :group => :development
 
 gem 'bootstrap-sass'
 
+gem 'autoprefixer-rails'
+
 gem 'figaro', '1.0'
 
 gem 'json'
+
+# elasticsearch
+gem 'elasticsearch-model', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
+gem 'elasticsearch-rails', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
+
+# for seeds
+gem 'random-word', group: [:development, :test]
+
 
 group :test do
   gem 'capybara'
