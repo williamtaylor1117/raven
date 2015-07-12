@@ -25,10 +25,14 @@ class AlchemyController < ApplicationController
   end
 
   def destroy
-    @document.destroy
-    respond_to do |format|
-      format.html {redirect_to action: 'index'}
-      format.json {head :no_content}
-    end
-  end
+     @document = Document.find(params[:id])
+ 
+    if @document.destroy
+      flash[:notice] = "\"#{@document.id}\" was deleted successfully."
+      redirect_to alchemy_index_path
+    else
+      flash[:error] = "There was an error deleting this result."
+      redirect_to alchemy_index_path
+     end
+   end
 end
