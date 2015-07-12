@@ -10,8 +10,8 @@ class AlchemyController < ApplicationController
 
   def create
     alchemyapi = AlchemyAPI.new()
-    response = alchemyapi.combined(params[:type], params[:q],  {'extract'=>'title, author' })
-    #response = alchemyapi.combined('url', params[:q],  {'extract'=>'page-image, title, author, concept, doc-sentiment, keyword, entity, relation ','sentiment'=>1, 'knowledgeGraph'=>1  })
+    #response = alchemyapi.combined(params[:type], params[:q],  {'extract'=>'title, author' })
+    response = alchemyapi.combined(params[:type], params[:q],  {'extract'=>'page-image, title, author, concept, doc-sentiment, keyword, entity, relation ','sentiment'=>1, 'knowledgeGraph'=>1  })
     
 
     if 
