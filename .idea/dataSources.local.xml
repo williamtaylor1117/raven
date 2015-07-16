@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Rails spyderframe: development" uuid="6c0755a4-2eca-4249-b66f-269a1b0dd9a8">
+      <first-sync>true</first-sync>
+    </data-source>
+    <data-source name="Rails spyderframe: test" uuid="c05e69e2-a6de-4ef4-870d-583ec4ab53d4">
+      <first-sync>true</first-sync>
+    </data-source>
+    <data-source name="Rails spyderframe: production" uuid="829070f8-80ee-44e4-b411-2c452704a3e8">
+      <first-sync>true</first-sync>
+    </data-source>
+  </component>
+</project>

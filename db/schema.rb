@@ -11,19 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150710032630) do
+ActiveRecord::Schema.define(version: 20150715021203) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "documents", force: :cascade do |t|
     t.json     "result"
+    t.string   "url"
+    t.string   "title"
+    t.string   "image"
+    t.string   "author"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
   end
 
   add_index "documents", ["user_id"], name: "index_documents_on_user_id", using: :btree
+
+  create_table "keywords", force: :cascade do |t|
+    t.integer  "keywordable_id"
+    t.string   "keywordable_type"
+    t.string   "url"
+    t.string   "text"
+    t.float    "relevance"
+    t.string   "knowledge_graph_type_hierarchy"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
