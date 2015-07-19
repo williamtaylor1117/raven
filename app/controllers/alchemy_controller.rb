@@ -9,12 +9,16 @@ class AlchemyController < ApplicationController
   end
 
   def create
-    alchemyapi = AlchemyAPI.new()
-    #response = alchemyapi.combined(params[:type], params[:q],  {'extract'=>'title, author' })
-    response = alchemyapi.combined(params[:type], params[:q],  {'extract'=>'page-image, title, author, concept, doc-sentiment, keyword, entity, relation ','sentiment'=>1, 'knowledgeGraph'=>1  })
-    
 
-    if 
+    alchemy_api_parser = AlchemyapiParser.new(params).call
+
+    # alchemyapi = AlchemyAPI.new()
+    # #response = alchemyapi.combined(params[:type], params[:q],  {'extract'=>'title, author' })
+    # response = alchemyapi.combined(params[:type], params[:q],  {'extract'=>'page-image, title, author, concept, doc-sentiment, keyword, entity, relation ','sentiment'=>1, 'knowledgeGraph'=>1  })
+    #
+
+
+    if alchemy_api_parser.successful?
       current_user.documents.create(result: response)
       flash[:notice] = "Input was successfully analyzed and persisted."
       redirect_to alchemy_index_path

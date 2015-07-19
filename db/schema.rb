@@ -11,10 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150715021203) do
+ActiveRecord::Schema.define(version: 20150718181203) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "actions", force: :cascade do |t|
+    t.integer  "relation_id"
+    t.string   "text"
+    t.string   "lemmatized"
+    t.string   "verb_text"
+    t.string   "verb_tense"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "concepts", force: :cascade do |t|
+    t.integer  "document_id"
+    t.string   "text"
+    t.float    "relevance"
+    t.string   "knowledge_graph_type_hierarchy"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
 
   create_table "documents", force: :cascade do |t|
     t.json     "result"
@@ -29,6 +48,20 @@ ActiveRecord::Schema.define(version: 20150715021203) do
 
   add_index "documents", ["user_id"], name: "index_documents_on_user_id", using: :btree
 
+  create_table "entities", force: :cascade do |t|
+    t.integer  "entityable_id"
+    t.string   "entityable_type"
+    t.string   "type"
+    t.float    "relevance"
+    t.string   "knowledge_graph_type_hierarchy"
+    t.integer  "count"
+    t.string   "text"
+    t.string   "disambiguated_name"
+    t.string   "disambiguated_geo"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
   create_table "keywords", force: :cascade do |t|
     t.integer  "keywordable_id"
     t.string   "keywordable_type"
@@ -38,6 +71,33 @@ ActiveRecord::Schema.define(version: 20150715021203) do
     t.string   "knowledge_graph_type_hierarchy"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
+  end
+
+  create_table "relation_objects", force: :cascade do |t|
+    t.integer  "relation_id"
+    t.string   "text"
+    t.float    "relevance"
+    t.string   "knowledge_graph_type_hierarchy"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  create_table "relations", force: :cascade do |t|
+    t.integer  "document_id"
+    t.string   "sentence"
+    t.string   "subject_text"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "sentiments", force: :cascade do |t|
+    t.integer  "sentimentable_id"
+    t.string   "sentimentable_type"
+    t.string   "type"
+    t.float    "score"
+    t.integer  "mixed"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   create_table "users", force: :cascade do |t|
