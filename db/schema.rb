@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20150718181203) do
   create_table "entities", force: :cascade do |t|
     t.integer  "entityable_id"
     t.string   "entityable_type"
-    t.string   "type"
+    t.string   "entity_type"
     t.float    "relevance"
     t.string   "knowledge_graph_type_hierarchy"
     t.integer  "count"

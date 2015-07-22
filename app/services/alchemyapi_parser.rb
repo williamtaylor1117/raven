@@ -1,9 +1,12 @@
 class AlchemyapiParser
-	attr_reader :params
+
+  attr_reader :type, :q
   attr_accessor :response
 	
-	def intialize(params: nil)
-		@params = params
+	def initialize(params)
+
+    @params = params
+
 	end
 
 	def call
@@ -11,61 +14,65 @@ class AlchemyapiParser
 		make_request_to_alchemy
 		save_document
 
-		# @response[entities]
+  end
 
-	end
+  def make_request_to_alchemy
 
-	def make_request_to_alchemy
+    alchemyapi = AlchemyAPI.new()
+    #response = alchemyapi.combined(@params[:type], @params[:q],  {'extract'=>'title, author' })
+    @response = alchemyapi.combined(@params[:type], @params[:q],  {'extract'=>'page-image, title, author, concept, doc-sentiment, keyword, entity, relation ','sentiment'=>1, 'knowledgeGraph'=>1  })
 
-		alchemyapi = AlchemyAPI.new()
-		@response = alchemyapi.combined(params[:type], params[:q],  {'extract'=>'title, author' })
-		#response = alchemyapi.combined(params[:type], params[:q],  {'extract'=>'page-image, title, author, concept, doc-sentiment, keyword, entity, relation ','sentiment'=>1, 'knowledgeGraph'=>1  })
+  end
 
-	end
+  def save_document
 
-	def save_document
-		response_object = JSON.parse @response
+    # response_object = JSON.parse(@response)
 
-		document = Document.new author: @response["document"]["author"],
-                            image_url: @response["document"]["image_url"],
-                            title: @response["document"]["title"],
-                            url: @response["document"]["url"]
+    document = Document.new author: @response["author"],
+                            image: @response["image_url"],
+                            title: @response["title"],
+                            url: @response["url"]
     document.save!
 
-    response_object["document"]["docSentiment"]["type"]["score"]["mixed"]
+    @response["docSentiment"]["type"]
+    @response["docSentiment"]["score"]
+    @response["docSentiment"]["mixed"]
 
-    response_object["document"]["concepts"].each do |concept|
-      document.concepts.create! text: concept["text"],
-                                relevance: concept["relevance"],
-                                knowledge_graph_type_hierarchy: concept["knowledgeGraph"]["typeHierarchy"]
+    @response["concepts"].each do |concept|
+      concept = document.concepts.build text: concept["text"],
+                                        relevance: concept["relevance"]
+      concept.knowledge_graph_type_hierarchy = concept["knowledgeGraph"]["typeHierarchy"] if concept["knowledgeGraph"]
+      concept.save!
     end
 
-    response_object["document"]["keywords"].each do |keyword|
-      document.keywords.create! text: keyword["text"],
-                                relevance: keyword["relevance"],
-                                knowledge_graph_type_hierarchy: keyword["knowledgeGraph"]["typeHierarchy"]
+    @response["keywords"].each do |keyword|
+      keyword = document.keywords.build text: keyword["text"],
+                                        relevance: keyword["relevance"]
+      keyword.knowledge_graph_type_hierarchy = keyword["knowledgeGraph"]["typeHierarchy"] if keyword["knowledgeGraph"]
+      keyword.save!
     end
 
-    response_object["document"]["entities"].each do |entity|
-      document.entities.create! type: entity["type"],
-                                relevance: entity["relevance"],
-                                knowledge_graph_type_hierarchy: entity["knowledgeGraph"]["typeHierarchy"],
-                                count: entity["count"],
-                                text: entity["text"]
-      end
+    @response["entities"].each do |entity|
+      entity = document.entities.build entity_type: entity["type"],
+                                       relevance: entity["relevance"],
+                                       text: entity["text"],
+                                       count: entity["count"]
+      entity.knowledge_graph_type_hierarchy =  entity["knowledgeGraph"]["typeHierarchy"] if entity["knowledgeGraph"]
+      entity.save!
+    end
 
-      response_object["document"]["relations"].each do |relation|
-        relation_record = document.relations.create! attribute: relation["attribute"]
+    @response["relations"].each do |relation|
+      relation_record = document.relations.create! attribute: relation["attribute"]
 
         relation['keywords'].each do |keyword|
           relation_record.keywords.create! attribute: keyword["attribute"],
-            knowledge_graph_type_hierarchy: keyword["knowledgeGraph"]["typeHierarchy"]
+            knowledge_graph_type_hierarchy: keyword["knowledgeGraph"]
 
 
       end
     end
 
-		document.entities.build name: @response["document"]["entities"]["name"]
+		document.entities.build name: @response["entities"]["name"]
 
 	end
 
