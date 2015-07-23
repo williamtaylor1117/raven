@@ -3,6 +3,7 @@ class Document < ActiveRecord::Base
     has_many :keywords, as: :keywordable
     has_many :entities, as: :entityable
     has_many :concepts
+    has_many :relations
     has_one :sentiment, as: :sentimentable
     include ElasticsearchSearchable
 
