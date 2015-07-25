@@ -59,12 +59,25 @@ class AlchemyapiParser
     @response["relations"].each do |relation|
       relation_record = document.relations.build sentence: relation["sentence"],
                                                  subject_text: relation["subject"]["text"]
-
+=begin
         relation["subject"]["keywords"].each do |keyword|
-          keyword_record = relation_record.keywords.build text: keyword["text"]
-          keyword_record.knowledge_graph_type_hierarchy = keyword["knowledgeGraph"]["typeHierarchy"] if keyword["knowledgeGraph"]
+          keyword_record = relation_record.keywords.build text: keyword["subject"]["text"]
+          keyword_record.knowledge_graph_type_hierarchy = keyword["subject"]["knowledgeGraph"]["typeHierarchy"] if keyword["knowledgeGraph"]
           keyword_record.save!
         end #end of keyword loop
+=end
+        relation["action"].each do |action|
+          action_record = relation_record.actions.build text: action["text"]
+          action_record.lemmatized = action["lemmatized"] if ["text"]
+          action_record.verb_text = action["lemmatized"]["verb"]["text"] if ["lemmatized"]["verb"]
+          action_record.verb_tense = action["lemmatized"]["verb"]["tense"] if ["lemmatized"]["verb"]
+          action_record.save!
+        end #end of action loop
+
+        relation["object"].each do |obj|
+          object_record = relation_record.relation_objects.build text: obj["text"]
+          object_record.save!
+        end #end of object loop
 
       relation_record.save!
     end #end of relation loop
