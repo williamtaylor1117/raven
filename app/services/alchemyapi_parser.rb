@@ -29,7 +29,8 @@ class AlchemyapiParser
                                    image: @response["image_url"],
                                    title: @response["title"],
                                    url: @response["url"],
-                                   result: @response
+                                   result: @response,
+                                   transaction_count: @response["totalTransactions"]
     document.save!
 
     if @response["docSentiment"]
@@ -93,11 +94,17 @@ class AlchemyapiParser
 
         relation_object_record = relation_record.relation_objects.create! text: relation["object"]["text"] if relation["object"].present?
           if relation["object"]["sentiment"]
-            # has_many: something.sentiments.build
-            # has_one: something.build_sentiment
             relation_sentiment = relation_object_record.build_sentiment sentiment_type: relation["object"]["sentiment"]["type"],
                                                                 sentiment_score: relation["object"]["sentiment"]["score"]
             relation_sentiment.save!
+          end
+
+          if relation["object"]["keywords"]
+            relation["object"]["keywords"].each do |keyword|
+              keyword_record = relation_object_record.keywords.build text: keyword["text"]
+              keyword_record.knowledge_graph_type_hierarchy = keyword["knowledgeGraph"]["typeHierarchy"] if keyword["knowledgeGraph"]
+              keyword_record.save!
+            end
           end
       relation_record.save!
 
