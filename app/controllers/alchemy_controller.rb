@@ -10,7 +10,8 @@ class AlchemyController < ApplicationController
 
   def create
 
-    alchemy_api_parser = AlchemyapiParser.new(params).call
+    alchemy_api_parser = AlchemyapiParser.new(params, current_user)
+    alchemy_api_parser.call
 
     # alchemyapi = AlchemyAPI.new()
     # #response = alchemyapi.combined(params[:type], params[:q],  {'extract'=>'title, author' })
@@ -19,7 +20,7 @@ class AlchemyController < ApplicationController
 
 
     if alchemy_api_parser.successful?
-      current_user.documents.create(result: response)
+      # current_user.documents.create(result: response)
       flash[:notice] = "Input was successfully analyzed and persisted."
       redirect_to alchemy_index_path
     else

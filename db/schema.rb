@@ -93,9 +93,9 @@ ActiveRecord::Schema.define(version: 20150718181203) do
   create_table "sentiments", force: :cascade do |t|
     t.integer  "sentimentable_id"
     t.string   "sentimentable_type"
-    t.string   "type"
-    t.float    "score"
-    t.integer  "mixed"
+    t.string   "sentiment_type"
+    t.float    "sentiment_score"
+    t.integer  "sentiment_mixed"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
   end
