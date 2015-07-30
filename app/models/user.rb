@@ -8,7 +8,5 @@ class User < ActiveRecord::Base
 
   has_many :documents
 
-  after_update { self.documents.each(&:touch) }
 
-  include ElasticsearchSearchable
 end

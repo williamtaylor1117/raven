@@ -5,6 +5,12 @@ class Document < ActiveRecord::Base
     has_many :concepts
     has_many :relations
     has_one :sentiment, as: :sentimentable
+
+    after_update { self.concepts.each(&:touch) }
+    after_update { self.entities.each(&:touch) }
+    after_update { self.keywords.each(&:touch) }
+    after_update { self.entity(&:touch)}
+    after_update { self.relations.each(&:touch) }
     include ElasticsearchSearchable
 
     default_scope { order('created_at DESC') }

@@ -1,5 +1,5 @@
 class SearchController < ApplicationController
   def index
-  	@search = User.search( *User.search_params(params) )
+  	@search = Document.search( *Document.search_params(params) )
   end
 end
