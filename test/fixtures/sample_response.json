@@ -421,7 +421,7 @@
 "knowledgeGraph": {
 "typeHierarchy": "/locations/countries/turkey"
 },
-"sentiment": {
+  "sentiment": {
 "type": "positive",
 "score": "0.097158",
 "mixed": "1"

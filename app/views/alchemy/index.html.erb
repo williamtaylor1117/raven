@@ -6,10 +6,14 @@
 <% @documents.each do |document| %>
 	<p><b>Result id:</b>  <%= document.id %></p>
 	<p><b>Date Retrieved:</b> <%= document.created_at %></p>
-	<p><b>JSON return:</b>
-</br> 
+	<p><b>Document text:</b>
+      </br>
+      <%= document.document_text %>
+    </p>
+    <p><b>JSON return:</b>
+    </br>
 	<%= document.result %></p>
 	
-</br>
+    </br>
 <HR>
 <% end %>

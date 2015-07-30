@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20150718181203) do
     t.string   "image"
     t.string   "author"
     t.integer  "transaction_count"
+    t.string   "document_text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
