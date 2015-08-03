@@ -14,15 +14,19 @@ What we're working with:
 
 * Rails version = 4.2.2
 
+* Java7 for ElasticSearch
+
+* JRuby
+
 * Major system dependencies include:
-    -ElasticSearch
-        [elasticsearch-model](git://github.com/elasticsearch/elasticsearch-rails.git)
-        [elasticsearch-rails](git://github.com/elasticsearch/elasticsearch-rails.git)
+
+    -[ElasticSearch](https://github.com/EricLondon/Rails-4-ElasticSearch-dynamic-facets)
+
 
     -[AlchemyAPI Ruby SDK](https://github.com/AlchemyAPI/alchemyapi_ruby) and associated [API key](http://www.alchemyapi.com/api/register.html)
 
 * Database = PostrgreSQL 9.4
 
-* Note: download the SDK into the lib folder of the application. The API key should be visible to the application. This is a part of the SDK clonign process. The alchemyapi_parser.rb file in the services directory of the application handles the request and the parsing of the objects to the pg database.
+* Note: download the SDK into the lib folder of the application. The API key should be visible to the application. This is a part of the SDK cloning process. The alchemyapi_parser.rb file in the services directory of the application handles the request and the parsing of the objects to the pg database.
 
 * All questions should go to the project dev, [Joel Ramsey](https://github.com/joelramsey), via GitHub.
