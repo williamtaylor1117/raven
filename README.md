@@ -16,8 +16,8 @@ What we're working with:
 
 * Major system dependencies include:
     -ElasticSearch
-        -[elasticsearch-model](git://github.com/elasticsearch/elasticsearch-rails.git)
-        -[elasticsearch-rails](git://github.com/elasticsearch/elasticsearch-rails.git)
+        [elasticsearch-model](git://github.com/elasticsearch/elasticsearch-rails.git)
+        [elasticsearch-rails](git://github.com/elasticsearch/elasticsearch-rails.git)
 
     -[AlchemyAPI Ruby SDK](https://github.com/AlchemyAPI/alchemyapi_ruby) and associated [API key](http://www.alchemyapi.com/api/register.html)
 
