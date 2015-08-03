@@ -122,7 +122,8 @@ module ElasticsearchSearchable
 
     # return array of model attributes to facet
     def search_facet_fields
-      self.content_columns.select {|c| [:boolean,:decimal,:float,:integer,:string,:text,:json].include?(c.type) }.map {|c| c.name }
+
+       {|c| [:boolean,:decimal,:float,:integer,:string,:text,:json].include?(c.type) }.map {|c| c.name }
     end
 
   end
