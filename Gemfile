@@ -24,19 +24,11 @@ gem 'faker'
 
 gem 'devise'
 
-gem 'pg'
+gem 'sqlite3'
 
 gem 'redcarpet'
 
 gem 'pundit'
-
-gem 'carrierwave'
-
-gem 'mini_magick'
-
-gem 'fog'
-
-gem 'will_paginate', '~> 3.0.5'
 
 gem 'pry-rails', :group => :development
 
@@ -48,14 +40,6 @@ gem 'figaro', '1.0'
 
 gem 'json'
 
-# elasticsearch
-gem 'elasticsearch-model', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
-gem 'elasticsearch-rails', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
-
-# for seeds
-gem 'random-word', group: [:development, :test]
-
-
 group :test do
   gem 'capybara'
   gem 'factory_girl_rails', '~> 4.0'
@@ -64,7 +48,6 @@ end
 group :production do
  
   gem 'rails_12factor'
-  gem 'puma'
  end
  
 group :development do

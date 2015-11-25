@@ -1,23 +1,17 @@
 development:
-  adapter: postgresql
-  encoding: utf8
-  database: joel_development
-  pool: 5
-  username: 
-  password:
-
+  adapter: sqlite3
+  database: db/development.sqlite3
+  host: localhost
+  
+  
 test: &TEST
-  adapter: postgresql
-  encoding: utf8
-  database: joel_test
-  pool: 5
-  username: 
-  password:
+  adapter: sqlite3
+  database: db/test.sqlite3
+  host: localhost
+  
 
 production:
-  adapter: postgresql
-  encoding: utf8
-  database: joel_production
-  pool: 5
-  username: 
-  password:
+  adapter: sqlite3
+  database: db/production.sqlite3
+  host: localhost
+  

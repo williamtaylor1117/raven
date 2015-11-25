@@ -3,5 +3,5 @@ class RelationObject < ActiveRecord::Base
   has_one :sentiment, as: :sentimentable
   has_many :keywords, as: :keywordable
   has_many :entities, as: :entityable
-  include ElasticsearchSearchable
+  
 end

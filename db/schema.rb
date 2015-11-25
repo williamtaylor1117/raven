@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20150718181203) do
   end
 
   create_table "documents", force: :cascade do |t|
-    t.json     "result"
+    t.string     "result"
     t.string   "url"
     t.string   "title"
     t.string   "image"
