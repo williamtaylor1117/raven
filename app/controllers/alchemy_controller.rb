@@ -1,4 +1,4 @@
-require 'alchemyAPI/alchemyapi'
+require 'alchemyAPI_ruby/alchemyapi'
 require 'json'
 
 class AlchemyController < ApplicationController

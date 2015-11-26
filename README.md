@@ -23,6 +23,6 @@ What we're working with:
 
 * Database = PostrgreSQL 9.4 for production and sqlite3 for development
 
-* Note: download the SDK into the lib folder of the application. The API key should be visible to the application. This is a part of the SDK cloning process. The alchemyapi_parser.rb file in the services directory of the application handles the request and the parsing of the objects to the pg database.
+* Note: clone the ruby SDK into the lib folder of the application. The API key should be visible to the application. This is a part of the SDK cloning process. The alchemyapi_parser.rb file in the services directory of the application handles the request and the parsing of the objects to the database.
 
 * All questions should go to the project dev, [Joel Ramsey](https://github.com/joelramsey), via GitHub.
