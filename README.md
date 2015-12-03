@@ -10,6 +10,8 @@ Phase Three: Incorporate special features and visualization library for analyzin
 
 What we're working with:
 
+* AngularJS = 1.2.24
+
 * Ruby version = 2.2.1p85
 
 * Rails version = 4.2.2
