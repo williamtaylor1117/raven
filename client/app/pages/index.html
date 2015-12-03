@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="raven">
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Raven</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+
+<body>
+	<nav class="navbar">
+        <!-- nav bar -->
+        <a ui-sref="contact" class="navbar-link">contact</a>
+        <a ui-sref="analyze" class="navbar-link">analyze</a>
+        <a ui-sref="result" class="navbar-link">result</a>
+        <a ui-sref="viz" class="navbar-link">visualization</a>
+    
+    </nav>
+    <div ui-view></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.24/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+    <script src="/scripts/app.js"></script>
+</body>
+
+</html>
