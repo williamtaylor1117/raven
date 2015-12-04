@@ -13,7 +13,11 @@
     <p><b>JSON return:</b>
     </br>
 	<%= document.result %></p>
-	
-    </br>
+      </br>
+      <p>Concept:</p>
+<%= @concepts.each do |concept| %>
+  <p> <%= concept.text %></p>
+<% end %>
 <HR>
 <% end %>
+

@@ -5,7 +5,16 @@ class AlchemyController < ApplicationController
   before_action :authenticate_user!
 
   def index
+
+    @document = Document.find(params[:id])
     @documents = Document.all
+    @concepts = Concept.all
+    @entities = Entity.all
+    @keywords = Keyword.all 
+    @relations = Relation.all 
+    @relation_objects = RelationObject.all 
+    @sentiments = Sentiment.all 
+
   end
 
   def create
