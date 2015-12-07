@@ -10,4 +10,7 @@ class WelcomeController < ApplicationController
 
   def analyze
   end
+  
+  def show 
+  end
 end

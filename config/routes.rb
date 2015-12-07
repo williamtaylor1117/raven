@@ -1,23 +1,19 @@
 Rails.application.routes.draw do
  
-  get 'search/index'
-
   devise_for :users
+  
+  get 'search/index'
   
   get 'search' => 'alchemy#search'
   
-  get "alchemy/query"
-
-  get "alchemy/index"
-
-  get "alchemy/create"
-
   get "welcome/index"
   
   get "welcome/about"
   
   get "welcome/contact"
   
+  #get 'alchemy/show'
+
   resources :alchemy
   
   resources :users, only: [:update]
