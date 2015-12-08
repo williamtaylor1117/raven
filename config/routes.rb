@@ -1,22 +1,26 @@
 Rails.application.routes.draw do
  
   devise_for :users
-  
-  get 'search/index'
-  
-  get 'search' => 'alchemy#search'
-  
-  get "welcome/index"
-  
-  get "welcome/about"
-  
-  get "welcome/contact"
-  
-  #get 'alchemy/show'
+    
+  get "documents/query"
 
-  resources :alchemy
+  get "documents/index"
+
+  get "documents/create"
+  
+  get "documents/show"
+  
+  resources :documents
   
   resources :users, only: [:update]
+  
+  get 'about' => 'welcome#about'
+  
+  get 'contact' => 'welcome#contact'
+  
+  get 'search' => 'documents#search'
+  
+  get 'Raven' => 'welcome#index'
   
   root to: 'welcome#index'
   

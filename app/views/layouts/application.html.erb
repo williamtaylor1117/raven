@@ -10,13 +10,13 @@
 <body>
   <div class="container">
   <ul class="nav nav-tabs">
-      <li><%= link_to "Raven", welcome_index_path %></li>
+      <li><%= link_to "Raven", root_path %></li>
     <% if current_user %>
     <li><%= link_to "Analyze", search_path %></li>
-    <li><%= link_to "Results", alchemy_index_path %></li>
+    <li><%= link_to "Results", documents_path %></li>
     <% end %>
-    <li><%= link_to "About", welcome_about_path %></li>
-    <li><%= link_to "Contact Us", welcome_contact_path %></li>
+    <li><%= link_to "About", about_path %></li>
+    <li><%= link_to "Contact", contact_path %></li>
     
     <div class="pull-right user-info">
            <% if current_user %>

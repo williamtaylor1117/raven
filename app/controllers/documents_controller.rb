@@ -1,11 +1,10 @@
 require 'alchemyapi_ruby/alchemyapi'
 require 'json'
 
-class AlchemyController < ApplicationController
+class DocumentsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    #@document = Document.find(params[:id])
     @documents = Document.all
     @concepts = Concept.all
     @entities = Entity.all
@@ -15,20 +14,24 @@ class AlchemyController < ApplicationController
     @sentiments = Sentiment.all 
   end
   
-  def show 
+  def show
     @document = Document.find(params[:id])
   end
- 
+  
+  def new
+    @document = Document.new
+  end
+  
   def create
     alchemy_api_parser = AlchemyapiParser.new(params, current_user)
     alchemy_api_parser.call
 
     if alchemy_api_parser.successful?
       flash[:notice] = "Input was successfully analyzed and persisted."
-      redirect_to alchemy_index_path
+      redirect_to documents_index_path
     else
       flash[:error] = "There was a problem analyzing your input. Please try again."
-      redirect_to alchemy_index_path
+      redirect_to documents_index_path
     end
   end
     
@@ -37,10 +40,10 @@ class AlchemyController < ApplicationController
  
     if @document.destroy
       flash[:notice] = "\"#{@document.id}\" was deleted successfully."
-      redirect_to alchemy_index_path
+      redirect_to documents_index_path
     else
       flash[:error] = "There was an error deleting this result."
-      redirect_to alchemy_index_path
+      redirect_to documents_index_path
      end
    end
   

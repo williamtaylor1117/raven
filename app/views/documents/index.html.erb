@@ -4,12 +4,10 @@
 
 <h2>Analysis Results</h2>
 <% @documents.each do |document| %>
-<p><b>Title: </b> <%= link_to document.title, @document %></p>
+  <p><b>Title: </b> <%= link_to document.title, document %></p>
   <p><b>Author: </b> <%= document.author %></p>
   <p><b>URL: </b> <%= document.url %></p>
 	<p><b>Date Retrieved:</b> <%= document.created_at %></p>
-  <p><b>Sentiment type: </b> <%= document.sentiment.sentiment_type %></p>
-  <p><b>Sentiment score: </b> <%= document.sentiment.sentiment_score %></p>
 <HR>
 <% end %>
 
