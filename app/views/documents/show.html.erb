@@ -1,9 +1,39 @@
 <div>
   </br>
-  <p><b>Title: </b> <%= @document.title %></p>
+  <h2><b>Title: </b> <%= @document.title %></h2>
   <p><b>Author: </b> <%= @document.author %></p>
   <p><b>Source: </b> <%= @document.url %></p>
   <p><b>Sentiment type: </b> <%= @document.sentiment.sentiment_type %></p>
   <p><b>Sentiment score: </b> <%= @document.sentiment.sentiment_score %></p>
+<HR>
+  <h2><b>Entities: </b></h2>  
+  <%= @entities.each do |entity| %>
+  <p><b>Entity: </b><%= entity.text %></p>
+  <p><b>Count: </b><%= entity.count %></p>
+  <p><b>Type: </b><%= entity.entity_type %></p>
+  <p><b>Relevance: </b><%= entity.relevance %></p>
+  <p><b>Knowledge Graph: </b><%= entity.knowledge_graph_type_hierarchy %></p>
+  <p><b>Disambiguated Name: </b><%= entity.disambiguated_name %></p>
+  <p><b>Disambiguated Geography: </b><%= entity.disambiguated_geo %></p>
+  <HR>
+  <% end %>
+  <HR>
+  <h2><b>Keywords: </b></h2>  
+  <%= @keywords.each do |keyword| %>
+    <p><b>Keyword: </b><%= keyword.text %></p>
+    <p><b>Type: </b><%= keyword.keywordable_type %></p>
+    <p><b>Relevance: </b><%= keyword.relevance %></p>
+    <p><b>Knowledge Graph: </b><%= keyword.knowledge_graph_type_hierarchy %></p>
+  <HR>
+  <% end %>
+  <HR>
+  <h2><b>Concepts: </b></h2>  
+  <%= @concepts.each do |concept| %>
+    <p><b>Concept: </b><%= concept.text %></p>
+    <p><b>Relevance: </b><%= concept.relevance %></p>
+    <p><b>Knowledge Graph: </b><%= concept.knowledge_graph_type_hierarchy %></p>
+  <HR>
+  <% end %>    
+  <HR>
   <p><b>Full text: </b> <%= @document.document_text %></p>
 </div>

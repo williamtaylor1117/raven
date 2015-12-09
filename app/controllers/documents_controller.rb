@@ -16,6 +16,12 @@ class DocumentsController < ApplicationController
   
   def show
     @document = Document.find(params[:id])
+    @concepts = Concept.where(document_id: @document.id)
+    @entities = Entity.where(entityable_id: @document.id)
+    @keywords = Keyword.where(keywordable_id: @document.id)
+    #@relations = Relation.where 
+    #@relation_objects = RelationObject.where 
+    #@sentiments = Sentiment.where
   end
   
   def new
