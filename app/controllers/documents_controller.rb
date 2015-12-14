@@ -6,26 +6,14 @@ class DocumentsController < ApplicationController
 
   def index
     @documents = Document.all
-    @concepts = Concept.all
-    @entities = Entity.all
-    @keywords = Keyword.all 
-    @relations = Relation.all 
-    @relation_objects = RelationObject.all 
-    @sentiments = Sentiment.all 
   end
   
   def show
     @document = Document.find(params[:id])
-    @concepts = Concept.where(document_id: @document.id)
-    @entities = Entity.where(entityable_id: @document.id)
-    @keywords = Keyword.where(keywordable_id: @document.id)
-    #@relations = Relation.where 
-    #@relation_objects = RelationObject.where 
-    #@sentiments = Sentiment.where
-  end
-  
-  def new
-    @document = Document.new
+    @concepts = @document.concepts
+    @entities = @document.entities
+    @keywords = @document.keywords
+    @relations = @document.relations
   end
   
   def create

@@ -1,5 +1,6 @@
 <div>
   </br>
+
   <h2><b>Title: </b> <%= @document.title %></h2>
   <p><b>Author: </b> <%= @document.author %></p>
   <p><b>Source: </b> <%= @document.url %></p>
@@ -8,13 +9,14 @@
 <HR>
   <h2><b>Entities: </b></h2>  
   <%= @entities.each do |entity| %>
-  <p><b>Entity: </b><%= entity.text %></p>
-  <p><b>Count: </b><%= entity.count %></p>
-  <p><b>Type: </b><%= entity.entity_type %></p>
-  <p><b>Relevance: </b><%= entity.relevance %></p>
-  <p><b>Knowledge Graph: </b><%= entity.knowledge_graph_type_hierarchy %></p>
-  <p><b>Disambiguated Name: </b><%= entity.disambiguated_name %></p>
-  <p><b>Disambiguated Geography: </b><%= entity.disambiguated_geo %></p>
+    <p><b>Entity: </b><%= entity.text %></p>
+    <p><b>Count: </b><%= entity.count %></p>
+    <p><b>Type: </b><%= entity.entity_type %></p>
+    <p><b>Relevance: </b><%= entity.relevance %></p>
+    <p><b>Knowledge Graph: </b><%= entity.knowledge_graph_type_hierarchy %></p>
+    <p><b>Sentiment: </b><%= entity.sentiment.sentiment_type %></p>
+    <p><b>Sentiment Score: </b><%= entity.sentiment.sentiment_score %></p>
+    <p><b>Sentiment Mixed: </b><%= entity.sentiment.sentiment_mixed %></p>
   <HR>
   <% end %>
   <HR>
@@ -24,6 +26,9 @@
     <p><b>Type: </b><%= keyword.keywordable_type %></p>
     <p><b>Relevance: </b><%= keyword.relevance %></p>
     <p><b>Knowledge Graph: </b><%= keyword.knowledge_graph_type_hierarchy %></p>
+    <p><b>Sentiment: </b><%= keyword.sentiment.sentiment_type %></p>
+    <p><b>Sentiment Score: </b><%= keyword.sentiment.sentiment_score %></p>
+    <p><b>Sentiment Mixed: </b><%= keyword.sentiment.sentiment_mixed %></p>
   <HR>
   <% end %>
   <HR>
@@ -35,5 +40,25 @@
   <HR>
   <% end %>    
   <HR>
-  <p><b>Full text: </b> <%= @document.document_text %></p>
+    <h2><b>Relations: </b></h2>  
+    <%= @relations.each do |relation| %>
+    <p><b>Extracted Sentence: </b><%= relation.sentence %></p>
+    <p><b>Subject: </b><%= relation.subject_text %></p>
+    <!--put relation loops here (keyword, entity, action, relation object)-->
+      <p><b>Verb Normalization: </b></p>
+      <%= relation.actions.each do |action| %>
+   
+        <p><b>Action: </b><%= action.text %> </p>
+        <p><b>Lemmatized: </b><%= action.lemmatized %> </p>
+        <p><b>Verb: </b><%= action.verb_text %> </p>
+        <p><b>Tense: </b><%= action.verb_tense %> </p>
+      <% end %>
+    
+      <p><b>Object: </b></p>
+      <%= relation.relation_objects.each do |object| %>
+        <p><b>Text: </b> <%= object.text %> </p>
+      <% end %>
+  <HR>
+  <% end %>    
+  <HR>
 </div>
