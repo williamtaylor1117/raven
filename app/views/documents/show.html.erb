@@ -1,63 +1,68 @@
 <div>
   </br>
-
-  <h2><b>Title: </b> <%= @document.title %></h2>
-  <p><b>Author: </b> <%= @document.author %></p>
-  <p><b>Source: </b> <%= @document.url %></p>
-  <p><b>Sentiment type: </b> <%= @document.sentiment.sentiment_type %></p>
-  <p><b>Sentiment score: </b> <%= @document.sentiment.sentiment_score %></p>
+  <%= link_to "<< Results", documents_path %>
+  <h2><%= @document.title %></h2>
+  <p>Author:  <%= @document.author %></p>
+  <p>Source:  <%= @document.url %></p>
+  <p>Sentiment type:  <%= @document.sentiment.sentiment_type %></p>
+  <p>Sentiment score:  <%= @document.sentiment.sentiment_score %></p>
+  <%= link_to "Delete this document", @document, method: :delete, data: {confirm: "Are you sure?"} %>
+  
 <HR>
-  <h2><b>Entities: </b></h2>  
+  <h2>Entities: </h2>  
   <%= @entities.each do |entity| %>
-    <p><b>Entity: </b><%= entity.text %></p>
-    <p><b>Count: </b><%= entity.count %></p>
-    <p><b>Type: </b><%= entity.entity_type %></p>
-    <p><b>Relevance: </b><%= entity.relevance %></p>
-    <p><b>Knowledge Graph: </b><%= entity.knowledge_graph_type_hierarchy %></p>
-    <p><b>Sentiment: </b><%= entity.sentiment.sentiment_type %></p>
-    <p><b>Sentiment Score: </b><%= entity.sentiment.sentiment_score %></p>
-    <p><b>Sentiment Mixed: </b><%= entity.sentiment.sentiment_mixed %></p>
+    <p>Entity: <%= entity.text %></p>
+    <p>Count: <%= entity.count %></p>
+    <p>Type: <%= entity.entity_type %></p>
+    <p>Relevance: <%= entity.relevance %></p>
+    <p>Knowledge Graph: <%= entity.knowledge_graph_type_hierarchy %></p>
+    <p>Sentiment: <%= entity.sentiment.sentiment_type %></p>
+    <p>Sentiment Score: <%= entity.sentiment.sentiment_score %></p>
+    <p>Sentiment Mixed: <%= entity.sentiment.sentiment_mixed %></p>
   <HR>
   <% end %>
   <HR>
-  <h2><b>Keywords: </b></h2>  
+  <h2>Keywords: </h2>  
   <%= @keywords.each do |keyword| %>
-    <p><b>Keyword: </b><%= keyword.text %></p>
-    <p><b>Type: </b><%= keyword.keywordable_type %></p>
-    <p><b>Relevance: </b><%= keyword.relevance %></p>
-    <p><b>Knowledge Graph: </b><%= keyword.knowledge_graph_type_hierarchy %></p>
-    <p><b>Sentiment: </b><%= keyword.sentiment.sentiment_type %></p>
-    <p><b>Sentiment Score: </b><%= keyword.sentiment.sentiment_score %></p>
-    <p><b>Sentiment Mixed: </b><%= keyword.sentiment.sentiment_mixed %></p>
+    <p>Keyword: <%= keyword.text %></p>
+    <p>Type: <%= keyword.keywordable_type %></p>
+    <p>Relevance: <%= keyword.relevance %></p>
+    <p>Knowledge Graph: <%= keyword.knowledge_graph_type_hierarchy %></p>
+    <p>Sentiment: <%= keyword.sentiment.sentiment_type %></p>
+    <p>Sentiment Score: <%= keyword.sentiment.sentiment_score %></p>
+    <p>Sentiment Mixed: <%= keyword.sentiment.sentiment_mixed %></p>
   <HR>
   <% end %>
   <HR>
-  <h2><b>Concepts: </b></h2>  
+  <h2>Concepts: </h2>  
   <%= @concepts.each do |concept| %>
-    <p><b>Concept: </b><%= concept.text %></p>
-    <p><b>Relevance: </b><%= concept.relevance %></p>
-    <p><b>Knowledge Graph: </b><%= concept.knowledge_graph_type_hierarchy %></p>
+    <p>Concept: <%= concept.text %></p>
+    <p>Relevance: <%= concept.relevance %></p>
+    <p>Knowledge Graph: <%= concept.knowledge_graph_type_hierarchy %></p>
   <HR>
   <% end %>    
   <HR>
-    <h2><b>Relations: </b></h2>  
+    <h2>Relations: </h2>  
     <%= @relations.each do |relation| %>
-    <p><b>Extracted Sentence: </b><%= relation.sentence %></p>
-    <p><b>Subject: </b><%= relation.subject_text %></p>
+    <p>Extracted Sentence: <%= relation.sentence %></p>
+    <p>Subject: <%= relation.subject_text %></p>
     <!--put relation loops here (keyword, entity, action, relation object)-->
-      <p><b>Verb Normalization: </b></p>
+      <p>Verb Normalization: </p>
       <%= relation.actions.each do |action| %>
    
-        <p><b>Action: </b><%= action.text %> </p>
-        <p><b>Lemmatized: </b><%= action.lemmatized %> </p>
-        <p><b>Verb: </b><%= action.verb_text %> </p>
-        <p><b>Tense: </b><%= action.verb_tense %> </p>
+        <p>Action: <%= action.text %> </p>
+        <p>Lemmatized: <%= action.lemmatized %> </p>
+        <p>Verb: <%= action.verb_text %> </p>
+        <p>Tense: <%= action.verb_tense %> </p>
       <% end %>
-    
-      <p><b>Object: </b></p>
       <%= relation.relation_objects.each do |object| %>
-        <p><b>Text: </b> <%= object.text %> </p>
+        <p>Object Text:  <%= object.text %> </p>
       <% end %>
+    <p>Relational Entities: </p>
+    <%= relation.entities.each do |entity| %>
+      <p>Entity: <%= entity.text %></p>
+      <p>Type: <%= entity.entity_type %></p>
+    <% end %>
   <HR>
   <% end %>    
   <HR>
