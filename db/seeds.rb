@@ -2,8 +2,16 @@
 admin = User.new(
   name: 'joel ramsey',
   email: 'joel.d.ramsey@gmail.com',
-  password: 'bomb2336'
+  password: 'password'
   )
 admin.skip_confirmation!
 admin.save!
+
+guest = User.new(
+  name: 'guest',
+  email: 'guest@raven.com',
+  password: 'password'
+  )
+guest.skip_confirmation!
+guest.save!
 puts "#{User.count} users created"

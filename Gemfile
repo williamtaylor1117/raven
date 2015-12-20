@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+gem 'pry'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.2'
 
@@ -24,8 +24,6 @@ gem 'faker'
 
 gem 'devise'
 
-gem 'sqlite3'
-
 gem 'redcarpet'
 
 gem 'pundit'
@@ -46,12 +44,12 @@ group :test do
 end
 
 group :production do
- 
+  gem 'pg'
   gem 'rails_12factor'
  end
  
 group :development do
-
+  gem 'sqlite3'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'rspec-rails', '~> 3.0'

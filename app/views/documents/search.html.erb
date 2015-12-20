@@ -1,28 +1,33 @@
 <h2>Content Analysis</h2>
 
-
 </br>
 <%= form_tag("documents/create", method: "get") do %>
-	
 	<%= label_tag('type', "Choose your input type:") %>
-</br>
-	<%=  radio_button_tag(:type, "text")  %> 
-	&thinsp;
-	<%=  label_tag(:text_input, "text")  %>
-	&emsp;
-	<%=  radio_button_tag(:type, "url")  %>
-	&thinsp;
-	<%=  label_tag(:url_input, "url")  %>
-	
-</br>
-</br>
+  </br>
 
-	<%= label_tag(:q, "Perform Analysis:") %>
-</br>
-	<%= search_field_tag :q, value = nil, options = {style:"width:250px;border-radius:5px;padding-bottom:5px;"} %>
-</br>
-</br>
-	<%= submit_tag("Analyze") %>
+  <div id="text"><%=  radio_button_tag(:type, "text")  %> 
+	
+    <%=  label_tag(:text_input, "text")  %></div>
+
+	<div id="url"><%=  radio_button_tag(:type, "url")  %>
+	
+    <%=  label_tag(:url_input, "url")  %></div>
+ 
+  <div id="file"><%=  radio_button_tag(:type, "text")  %>
+	
+    <%=  label_tag(:file_input, "file")  %></div>
+  	
+  </br>
+
+  <div id="file_browse"><input type="file" name="inputfile"></div>
+
+  </br>
+
+  <div class="search_field"><%= label_tag(:q, "Perform Analysis:") %></div>
+  </br>
+
+  <div class="search_field"><%= search_field_tag :q, value = nil, options = {style:"width:400px;border-radius:5px;padding-bottom:5px;"} %>  
+  <%= submit_tag("Analyze") %></div>
 
 <% end %>
 

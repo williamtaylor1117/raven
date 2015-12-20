@@ -22,11 +22,10 @@ class DocumentsController < ApplicationController
 
     if alchemy_api_parser.successful?
       flash[:notice] = "Input was successfully analyzed and persisted."
-      redirect_to documents_index_path
     else
       flash[:error] = "There was a problem analyzing your input. Please try again."
-      redirect_to documents_index_path
     end
+    redirect_to documents_index_path
   end
     
   def destroy
