@@ -22,6 +22,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'faker'
 
+gem 'pg'
+
 gem 'devise'
 
 gem 'redcarpet'
@@ -44,12 +46,10 @@ group :test do
 end
 
 group :production do
-  gem 'pg'
   gem 'rails_12factor'
  end
  
 group :development do
-  gem 'sqlite3'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'rspec-rails', '~> 3.0'
