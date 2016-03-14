@@ -29,9 +29,10 @@ class AlchemyapiParser
                                    image: @response["image_url"],
                                    title: @response["title"],
                                    url: @response["url"],
-                                   result: @response,
-                                   document_text: @response["text"],
-                                   transaction_count: @response["totalTransactions"]
+                                   result: @response
+                                   #,document_text: @response["text"],
+                                   # transaction_count: @response["totalTransactions"]                                   
+
     document.save!
 
     if @response["docSentiment"]

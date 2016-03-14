@@ -36,13 +36,11 @@ ActiveRecord::Schema.define(version: 20150718181203) do
   end
 
   create_table "documents", force: :cascade do |t|
-    t.string   "result"
+    t.json     "result"
     t.string   "url"
     t.string   "title"
     t.string   "image"
     t.string   "author"
-    t.integer  "transaction_count"
-    t.string   "document_text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
@@ -53,7 +51,7 @@ ActiveRecord::Schema.define(version: 20150718181203) do
   create_table "entities", force: :cascade do |t|
     t.integer  "entityable_id"
     t.string   "entityable_type"
-    t.string   "entity_type"
+    t.string   "type"
     t.float    "relevance"
     t.string   "knowledge_graph_type_hierarchy"
     t.integer  "count"

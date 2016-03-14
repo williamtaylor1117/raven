@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 gem 'pry'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.2'
@@ -39,6 +39,8 @@ gem 'autoprefixer-rails'
 gem 'figaro', '1.0'
 
 gem 'json'
+
+#gem 'alchemy-api-rb',:require => 'alchemy_api'
 
 group :test do
   gem 'capybara'
