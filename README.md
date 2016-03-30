@@ -27,4 +27,4 @@ What we're working with:
 
 * Note: clone the ruby SDK into the lib folder of the application. The API key should be visible to the application. This is a part of the SDK cloning process. The alchemyapi_parser.rb file in the services directory of the application handles the request and the parsing of the objects to the database.
 
-* All questions should go to the project dev, [Joel Ramsey](https://github.com/joelramsey), via GitHub.
+* All questions should go to the project dev, [Grant Taylor](https://github.com/granttaylor0710), via GitHub.
